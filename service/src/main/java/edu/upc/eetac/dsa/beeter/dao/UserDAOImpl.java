@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAOImpl implements UserDAO {
+
     @Override
     public User getUserById(String id) throws SQLException {
         // Modelo a devolver
