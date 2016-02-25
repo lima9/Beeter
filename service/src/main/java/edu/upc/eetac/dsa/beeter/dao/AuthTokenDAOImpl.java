@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.beeter.dao;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.upc.eetac.dsa.beeter.auth.UserInfo;
 import edu.upc.eetac.dsa.beeter.entity.Role;
 import edu.upc.eetac.dsa.beeter.entity.AuthToken;
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuthTokenDAOImpl implements AuthTokenDAO {
 
     @Override
