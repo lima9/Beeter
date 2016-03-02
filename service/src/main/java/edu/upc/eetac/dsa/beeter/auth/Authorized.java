@@ -13,7 +13,7 @@ public class Authorized {
     private List<AuthorizedResource> authorizedResourcesList;
 
     private Authorized() throws IOException {
-        InputStream in = this.getClass().getClassLoader().getResourceAsStream("authorized.json");
+        InputStream in = this.getClass().getClassLoader().getResourceAsStream("authorization.json");
         ObjectMapper objectMapper = new ObjectMapper();
         TypeFactory typeFactory = objectMapper.getTypeFactory();
         authorizedResourcesList = objectMapper.readValue(in, typeFactory.constructCollectionType(List.class, AuthorizedResource.class));
