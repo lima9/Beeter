@@ -25,8 +25,9 @@ import java.util.List;
 public class AuthRequestFilter implements ContainerRequestFilter{
 
     @Override
-    public void filter(ContainerRequestContext requestContext) throws IOException {
-        if (requestContext.getUriInfo().getPath().equals("myresource") && requestContext.getMethod().equals("GET"))
+    public void filter(ContainerRequestContext requestContext) throws IOException
+    {
+        if(Authorized.getInstance().isAuthorized(requestContext))
             return;
 
         final boolean secure = requestContext.getUriInfo().getAbsolutePath().getScheme().equals("https");
@@ -45,28 +46,33 @@ public class AuthRequestFilter implements ContainerRequestFilter{
             {
                 @Override
                 public Principal getUserPrincipal() {
+
                     return principal;
                 }
 
                 @Override
-                public boolean isUserInRole(String role) {
+                public boolean isUserInRole(String role)
+                {
                     List<Role> roles = null;
                     if (principal != null) roles = principal.getRoles();
                     return (roles.size() > 0 && roles.contains(Role.valueOf(role)));
                 }
 
                 @Override
-                public boolean isSecure() {
+                public boolean isSecure()
+                {
                     return secure;
                 }
 
                 @Override
-                public String getAuthenticationScheme() {
+                public String getAuthenticationScheme()
+                {
                     return "X-Auth-Token";
                 }
             });
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             throw new InternalServerErrorException();
         }
     }
