@@ -7,6 +7,7 @@ import edu.upc.eetac.dsa.beeter.dao.UserDAO;
 import edu.upc.eetac.dsa.beeter.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.beeter.entity.AuthToken;
 import edu.upc.eetac.dsa.beeter.entity.User;
+import org.glassfish.jersey.linking.InjectLink;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;

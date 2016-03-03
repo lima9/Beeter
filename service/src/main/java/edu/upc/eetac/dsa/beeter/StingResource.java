@@ -5,6 +5,7 @@ import edu.upc.eetac.dsa.beeter.dao.StingDAOImpl;
 import edu.upc.eetac.dsa.beeter.entity.AuthToken;
 import edu.upc.eetac.dsa.beeter.entity.Sting;
 import edu.upc.eetac.dsa.beeter.entity.StingCollection;
+import org.glassfish.jersey.linking.InjectLink;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -15,8 +16,8 @@ import java.sql.SQLException;
 @Path("stings")
 public class StingResource
 {
-        @Context
-        private SecurityContext securityContext;
+    @Context
+    private SecurityContext securityContext;
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
